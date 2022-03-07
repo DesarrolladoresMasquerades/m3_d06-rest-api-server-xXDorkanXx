@@ -1,9 +1,9 @@
 express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 
 router.get("/:projectId", (req, res)=>{
   Project.findById(req.params.projectId)
+  .populate("tasks")
   .then((project)=>{req.json(project)})
   .catch((err)=>{res.json(err)})
 })
@@ -22,6 +22,7 @@ router.delete("/:projectId", (req, res)=>{
 
 router.get("/", (req, res)=>{
   Project.find()
+  .populate("tasks")
   .then((projects)=>{res.json(projects)})
   .catch((err)=>{res.json(err)})
 })
