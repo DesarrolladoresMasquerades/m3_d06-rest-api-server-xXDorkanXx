@@ -1,10 +1,12 @@
 express = require("express");
 const router = express.Router();
+const Project = require("../models/Project.model");
+
 
 router.get("/:projectId", (req, res)=>{
   Project.findById(req.params.projectId)
   .populate("tasks")
-  .then((project)=>{req.json(project)})
+  .then((project)=>{res.json(project)})
   .catch((err)=>{res.json(err)})
 })
 

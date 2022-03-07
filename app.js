@@ -13,7 +13,7 @@ app.use("/api", indexRoutes);
 const projectRouter = require("./routes/project.routes");
 app.use("/api/projects", projectRouter);
 
-const taskRouter = require("./routes/task.routes");
+const taskRouter = require("./routes/tasks.routes");
 app.use("/api/tasks", taskRouter);
 
 require("./error-handling")(app);
